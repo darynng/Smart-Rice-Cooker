@@ -24,8 +24,36 @@ Variable Cooking Options: Supports different types of rice
 
 Customized Portion: Calibrates for accurate rice measurement
 
-Water Level Recommendation: Suggests optimal water level for selected rice type
+##Challenges and Proposed Solutions
 
-Remote Control: Full control and monitoring via Blynk app
+1. Device Offline / Not Showing Online on Blynk
 
-Mobile App Integration: Displays process information and sends meal-ready notifications
+Challenges: The device often appears offline, and the serial monitor does not indicate the reason for the disconnection.
+
+Solutions:
+
+Use WifiScan.ino to verify that the device is properly connected to Wi-Fi.
+
+Ensure the correct #define BLYNK_AUTH_TOKEN is used; tokens may change and need updating to reconnect to the Blynk app.
+
+Check the LCD I2C address (0x27) if display updates are not visible.
+
+Turn on the serial monitor in the IDE with the correct baud rate to monitor status messages.
+
+2. Countdown Timer Showing Incorrect Completion
+
+Challenges: The timer shows zero minutes, but the countdown is still running in milliseconds, causing the “finish” message not to appear.
+
+Solutions: Convert milliseconds to minutes when displaying the countdown to ensure accurate end-time notifications.
+
+3. Program Unresponsiveness Due to delay()
+
+Challenges: Using delay() halts all other operations, causing unresponsive behavior during multitasking or real-time updates.
+
+Solutions: Replace delay() with non-blocking timing using millis() to allow simultaneous execution of multiple operations.
+
+4. Blynk Auth Token Management
+
+Challenges: Devices may fail to reconnect if the Blynk auth token is outdated.
+
+Solutions: Regularly check and update the auth token to ensure the device remains connected to the app.
