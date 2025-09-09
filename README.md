@@ -24,7 +24,7 @@ Variable Cooking Options: Supports different types of rice
 
 Customized Portion: Calibrates for accurate rice measurement
 
-##Challenges and Proposed Solutions
+## Challenges and Proposed Solutions
 
 1. Device Offline / Not Showing Online on Blynk
 
